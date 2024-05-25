@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City17 PRF form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="/static/faviconstjohn.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for the whole page */
+        }
+        .form-container {
+            background: url('/static/amalfibadge.jpg') no-repeat center center; 
+            background-size: auto;            
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(2,0,0,0.1);
+        }
+        .form-heading {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque background for better readability */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .logo {
+            max-width: 200px; /* Adjust the size of the logo as needed */
+        }
+            </style>
+
+</head>
+<body>
+    
+        <div class="container mt-5">
+            <div class="form-container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="form-heading">
+                        <img src="/static/stjohnlogo.jpg" alt="Logo" class="logo" style="text-decoration: underline ;">
+                        City17 PRF Form
+                    </h1>
+                </div>
+                
+
+        <form id="combinedForm">
+            <h2 style="text-decoration: underline;">Personal information</h2>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Gender">Gender:</label>
+                <select class="form-control" id="Gender" name="Gender" required>
+                    <option value="">----</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                                        
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="date-of-birth" required>
+            </div>
+
+            <div class="form-group">
+                <label for="yoj">Year of Joining:</label>
+                <input type="date" class="form-control" id="yoj" name="year-of-joining" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="tel" class="form-control" id="contact" name="Contact" required pattern="[0-9]{10}">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="Address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ranks">Ranks:</label>
+                <select class="form-control" id="ranks" name="Ranks" required>
+                    <option value="">----</option>
+                    <option value="DO">DO</option>
+                    <option value="DSM">DSM</option>
+                    <option value="DS">DS</option>
+                    <option value="Member">Member</option>
+                    
+                </select>
+            </div>
+
+            <h2 style="text-decoration: underline;">Parent/Guardian Information</h2>
+
+            <div class="form-group">
+                <label for="ParentName">Parent/Guardian Name:</label>
+                <input type="text" class="form-control" id="ParentName" name="ParentName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ParentContact">Parent/Guardian Phone Number:</label>
+                <input type="text" class="form-control" id="ParentContact" name="ParentContact" required pattern="[0-9]{10}">
+            </div>
+
+            <div class="form-group">
+                <label for="relationship">Relationship:</label>
+                <input type="text" class="form-control" id="relationship" name="Relationship" required>
+            </div>
+
+            <div class="form-group">
+                <label for="NextOfKin">Next of Kin:</label>
+                <input type="text" class="form-control" id="NextOfKin" name="NextOfKin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="NextOfKinContact">Next of Kin Contact:</label>
+                <input type="tel" class="form-control" id="NextOfKinContact" name="NextOfKinContact" required pattern="[0-9]{10}">
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- <h1 class="mt-5">Parent/Guardian Information</h1>
+        <div id="parentInfo"></div>
+    </div> -->
+
+    <!-- jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('combinedForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const adultData = {
+                'Name': formData.get('Name'),
+                'Gender': formData.get('Gender'),
+                'date-of-birth': formData.get('date-of-birth'),
+                'year-of-joining': formData.get('year-of-joining'),
+                'Contact': formData.get('Contact'),
+                'Email': formData.get('Email'),
+                'Address': formData.get('Address'),
+                'Ranks': formData.get('Ranks')
+            };
+            const parentData = {
+                'ParentName': formData.get('ParentName'),
+                'ParentContact': formData.get('ParentContact'),
+                'Relationship': formData.get('Relationship'),
+                'NextOfKin': formData.get('NextOfKin'),
+                'NextOfKinContact': formData.get('NextOfKinContact'),
+                'NextOfKinRelationship': formData.get('NextOfKinRelationship')
+            };
+
+            fetch('/add_combined_data', {
+                method: 'POST',
+                body: JSON.stringify({ adultData, parentData }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Data submitted successfully!');
+                    location.reload(); // Refresh the page to show the new data
+                } else {
+                    alert('An error occurred while submitting the data.');
+                }
+            });
+        });
+
+        // Fetch and display parent/guardian information
+        fetch('/parent_info')
+            .then(response => response.json())
+            .then(data => {
+                const parentInfoDiv = document.getElementById('parentInfo');
+                if (Array.isArray(data)) { // Check if data is an array
+                    data.forEach(parent => {
+                        const parentElement = document.createElement('div');
+                        parentElement.textContent = `${parent.ParentName} (${parent.Relationship}): ${parent.ParentContact}, Next of Kin: ${parent.NextOfKin} (${parent.NextOfKinRelationship}), Contact: ${parent.NextOfKinContact}`;
+                        parentInfoDiv.appendChild(parentElement);
+                    });
+                } else {
+                    console.error('Error: Data received is not an array');
+                    parentInfoDiv.textContent = 'Error: Failed to fetch parent info';
+                }
+            })
+            .catch(error => console.error('Error fetching parent info:', error));
+    </script>
+</body>
+</html>
